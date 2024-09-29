@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FRVjeAz6mWk=",
+  "dgSpecHash": "payceRnUjUk=",
   "success": true,
-  "projectFilePath": "/Users/tianzhu/Desktop/HTTP5125project/MyFirstProject/MyFirstProject.csproj",
+  "projectFilePath": "/Users/tianzhu/Desktop/5125/http5125/MyFirstProject1/MyFirstProject.csproj",
   "expectedPackageFiles": [
     "/Users/tianzhu/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "/Users/tianzhu/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",

@@ -433,11 +433,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/tianzhu/Desktop/HTTP5125project/MyFirstProject/MyFirstProject.csproj",
+      "projectUniqueName": "/Users/tianzhu/Desktop/5125/http5125/MyFirstProject1/MyFirstProject.csproj",
       "projectName": "MyFirstProject",
-      "projectPath": "/Users/tianzhu/Desktop/HTTP5125project/MyFirstProject/MyFirstProject.csproj",
+      "projectPath": "/Users/tianzhu/Desktop/5125/http5125/MyFirstProject1/MyFirstProject.csproj",
       "packagesPath": "/Users/tianzhu/.nuget/packages/",
-      "outputPath": "/Users/tianzhu/Desktop/HTTP5125project/MyFirstProject/obj/",
+      "outputPath": "/Users/tianzhu/Desktop/5125/http5125/MyFirstProject1/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/tianzhu/.nuget/NuGet/NuGet.Config"
