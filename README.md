@@ -1,6 +1,6 @@
 # HTTP 5125
 
-![course outline](courseoutlineixd5106.png)
+![course outline](courseoutline5125.png)
 
 ## Learning Outcomes
 - Understand the basics of web applications.
