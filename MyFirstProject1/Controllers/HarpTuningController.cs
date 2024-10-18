@@ -15,7 +15,7 @@ namespace MyFirstProject.Controllers
         /// <summary>
         /// Changes all the '+' to "Tighten" and '-' to "Loosen" making tuning instructions easier to read
         /// </summary>
-        /// <returns>Returns the Tighten , Loosen, bewtween alphabet and integer </returns>
+        /// <returns>Returns the Tighten , Loosen, bewtween letters and integers </returns>
         /// <param name="input"> For user to input the tuning instructions
         /// <example>
         /// POST http://localhost:5298/api/J32022/HarpTurning -H "Content-Type: multipart/form-data" -F "Instructions=AFB+8SC-4H-2GDPE+9" -> AFB Tighten 8 SC Loosen 4 H Loosen 2 GDPE Tighten 9
