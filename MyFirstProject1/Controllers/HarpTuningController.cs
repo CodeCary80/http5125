@@ -15,7 +15,7 @@ namespace MyFirstProject.Controllers
         /// <summary>
         /// Changes all the '+' to "Tighten" and '-' to "Loosen" making tuning instructions easier to read
         /// </summary>
-        /// <returns>Returns the Tighten , Loosen, bewtween letters and integers </returns>
+        /// <returns>Returns the Tighten , Loosen, bewtween letters and turns </returns>
         /// <param name="input"> For user to input the tuning instructions
         /// <example>
         /// POST http://localhost:5298/api/J32022/HarpTurning -H "Content-Type: multipart/form-data" -F "Instructions=AFB+8SC-4H-2GDPE+9" -> AFB Tighten 8 SC Loosen 4 H Loosen 2 GDPE Tighten 9
@@ -41,18 +41,18 @@ namespace MyFirstProject.Controllers
                     action = instructions[i] == '+' ? "Tighten" : "Loosen";
                     i++;
                 }
-                string stringTurns = "";
+                string stringsTurning = "";
                 if(i < n && instructions[i] >= '0' && instructions[i] <= '9'){
-                    stringTurns += instructions[i];
+                    stringsTurning += instructions[i];
                     i++;
                 }
-                int turns = int.Parse(stringTurns);
+                int turns = int.Parse(stringsTurning);
 
                  output.Append($"{letters} {action} {turns} ");
             
             }
-            string resultFormatting = output.ToString().Trim();
-            return Ok(resultFormatting);
+            string outputFormatting = output.ToString().Trim();
+            return Ok(outputFormatting);
     }
 }
 }
