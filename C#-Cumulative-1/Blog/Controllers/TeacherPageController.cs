@@ -57,6 +57,83 @@ namespace School.Controllers
             return View(selectedTeacher);
         }
 
+    
+          /// <summary>
+        /// Displays a form to create a new teacher. 
+        /// </summary>
+        /// <example>
+        /// GET : TeacherPage/New ->new.cshtml
+        /// </example>
+        /// <returns>
+        /// A view that contains the form for adding a new teacher.
+        /// </returns>
+        [HttpGet]
+        public IActionResult New(int id)
+        {
+            return View();
+        }
+
+         /// <summary>
+        /// Adds a new teacher and redirects to the Show page 
+        /// </summary>
+        /// <example>
+        /// POST: TeacherPage/Create -> show.cshtml -> list.cshtml
+        /// </example>
+        /// <returns>
+        /// Redirects to the Show page with the new teacher's ID (but the id could be auto-incremented as it will assign unique id to the new insert so confirm the id in the database) if successful while returning error message if unccessful
+        [HttpPost]
+        public IActionResult Create(Teacher NewTeacher)
+        {
+            IActionResult result = _api.AddTeacher(NewTeacher);
+
+            if (result is OkObjectResult okResult)
+    {
+        // Extract the teacher ID from OkObjectResult
+        int teacherId = (int)okResult.Value;
+
+        // Redirect to the "Show" action with the teacherId
+        return RedirectToAction("Show", new { id = teacherId });
+    }
+
+    // If the result is not successful, return an error on the page
+    return View("Error"); // 
+        }
+
+        
+         /// <summary>
+        /// Displays a confirmation page before deleting a teacher.
+        /// </summary>
+        /// <example>
+        /// // GET : TeacherPage/DeleteConfirm/{11} (Cary Agos, teacher ID: 11)-> Are you sure you want to delete Cary Agos? Conform delete -> back to the list
+        /// </example>
+        /// <returns>
+        /// A confirmation page
+        /// </returns>
+        [HttpGet]
+        public IActionResult DeleteConfirm(int id)
+        {
+            Teacher selectedTeacher = _api.FindTeacher(id);
+            return View(selectedTeacher);
+        }
+
+          /// <summary>
+        /// Deletes the selected teacher by their ID and redirects to the list page. 
+        /// </summary>
+        /// /// <param name="id">Selected teacher's ID</param>
+        /// <example>
+        /// POST: /api/Teacher/DeleteTeacher/12 -> 1
+        /// </example>
+        /// <returns>
+        /// A list without the selected teacher
+        /// </returns>
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            int TeacherId = _api.DeleteTeacher(id);
+            // redirects to list action
+            return RedirectToAction("List");
+        }
+
       
 }
 }

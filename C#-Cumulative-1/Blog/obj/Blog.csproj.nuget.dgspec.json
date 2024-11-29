@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/tianzhu/Desktop/5125/http5125/C# Cumulative/Blog/Blog.csproj": {}
+    "/Users/tianzhu/Desktop/5125/http5125/C#-Cumulative-1/Blog/Blog.csproj": {}
   },
   "projects": {
-    "/Users/tianzhu/Desktop/5125/http5125/C# Cumulative/Blog/Blog.csproj": {
+    "/Users/tianzhu/Desktop/5125/http5125/C#-Cumulative-1/Blog/Blog.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/tianzhu/Desktop/5125/http5125/C# Cumulative/Blog/Blog.csproj",
+        "projectUniqueName": "/Users/tianzhu/Desktop/5125/http5125/C#-Cumulative-1/Blog/Blog.csproj",
         "projectName": "Blog",
-        "projectPath": "/Users/tianzhu/Desktop/5125/http5125/C# Cumulative/Blog/Blog.csproj",
+        "projectPath": "/Users/tianzhu/Desktop/5125/http5125/C#-Cumulative-1/Blog/Blog.csproj",
         "packagesPath": "/Users/tianzhu/.nuget/packages/",
-        "outputPath": "/Users/tianzhu/Desktop/5125/http5125/C# Cumulative/Blog/obj/",
+        "outputPath": "/Users/tianzhu/Desktop/5125/http5125/C#-Cumulative-1/Blog/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/tianzhu/.nuget/NuGet/NuGet.Config"
