@@ -24,10 +24,17 @@ The services we need for everything connects, including the information in datab
 7. Run the project debugging mode (F5) **while** the database environment is running
 8. : Test to see if the ListAuthorNames API responds with information about authors.
     - 
-GET api/TeacherPage/List 
-   
+
+## How to get the list of items' information or only one item's detail from the database:
+check on teacher/course/student APIcontroller to see ListTeacherInfos and FindTeacher function
+    if you want them demonstrate on the web page, creating pagecontroller that links to List.cshtml and show.cshtml to build the function
+
+## How to add new one item's detail to the database or delete an existing item from the database;?
+check on teacher/course/student APIcontroller to see AddTeachers and DeleteTeacher function
+    If you want them to demonstrate the process and see the result on the web page, create a pagecontroller that links to List.cshtml and Show.cshtml, while adding New.cshtml's link to List.cshtml so you can add a new item anytime, and adding DeleteConfirm.cshtml's link to Show.cshtml so you can delete this item anytime.
 ## Common Errors
 System.InvalidOperationException: Unable to resolve service for type 'School.Controllers.TeacherAPIController' while attempting to activate 'School.Controllers.TeacherPageController'
 
 InvalidOperationException: The view 'List' was not found. The following locations were searched: /Views/TeacherPage/List.cshtml /Views/Shared/List.cshtml
 
+If your database's column is auto-incremented then it will automatically assign unique id to your item instead of using the one you set up, make sure to check your item's id in the database and make error handling when trying to delete a teacher that does not exist.
