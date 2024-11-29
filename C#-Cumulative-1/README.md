@@ -26,15 +26,15 @@ The services we need for everything connects, including the information in datab
     - 
 
 ## How to get the list of items' information or only one item's detail from the database:
-check on teacher/course/student APIcontroller to see ListTeacherInfos and FindTeacher function
-    if you want them demonstrate on the web page, creating pagecontroller that links to List.cshtml and show.cshtml to build the function
+1. check on teacher/course/student APIcontroller to see ListTeacherInfos and FindTeacher function
+2. if you want them demonstrate on the web page, creating pagecontroller that links to List.cshtml and show.cshtml to build the function
 
 ## How to add new one item's detail to the database or delete an existing item from the database;?
-check on teacher/course/student APIcontroller to see AddTeachers and DeleteTeacher function
-    If you want them to demonstrate the process and see the result on the web page, create a pagecontroller that links to List.cshtml and Show.cshtml, while adding New.cshtml's link to List.cshtml so you can add a new item anytime, and adding DeleteConfirm.cshtml's link to Show.cshtml so you can delete this item anytime.
+1. check on teacher/course/student APIcontroller to see AddTeachers and DeleteTeacher function
+2. If you want them to demonstrate the process and see the result on the web page, create a pagecontroller that links to List.cshtml and Show.cshtml, while adding New.cshtml's link to List.cshtml so you can add a new item anytime, and adding DeleteConfirm.cshtml's link to Show.cshtml so you can delete this item anytime.
 ## Common Errors
-System.InvalidOperationException: Unable to resolve service for type 'School.Controllers.TeacherAPIController' while attempting to activate 'School.Controllers.TeacherPageController'
+1. System.InvalidOperationException: Unable to resolve service for type 'School.Controllers.TeacherAPIController' while attempting to activate 'School.Controllers.TeacherPageController'
 
-InvalidOperationException: The view 'List' was not found. The following locations were searched: /Views/TeacherPage/List.cshtml /Views/Shared/List.cshtml
+2. InvalidOperationException: The view 'List' was not found. The following locations were searched: /Views/TeacherPage/List.cshtml /Views/Shared/List.cshtml
 
-If your database's column is auto-incremented then it will automatically assign unique id to your item instead of using the one you set up, make sure to check your item's id in the database and make error handling when trying to delete a teacher that does not exist.
+3. If your database's column is auto-incremented then it will automatically assign unique id to your item instead of using the one you set up, make sure to check your item's id in the database and make error handling when trying to delete a teacher that does not exist.
