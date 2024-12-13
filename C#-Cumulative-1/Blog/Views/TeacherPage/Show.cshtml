@@ -37,9 +37,11 @@
     </style>
 </head>
 <body>
-<div><a href="/TeacherPage/List">Back to List</a></div>
-<div><a class="alert-warning" href="/TeacherPage/DeleteConfirm/@Model.TeacherID">Delete</a>
-</div>
+    <nav>
+        <a href="/TeacherPage/List">Back to List</a>
+        <a class="alert-warning" href="/TeacherPage/DeleteConfirm/@Model.TeacherID">Delete</a>
+        <a href="/TeacherPage/Edit/@Model.TeacherID">Edit</a>
+</nav>
 <div>
     <h2 class="teacher-name">@Model.TeacherFName @Model.TeacherLName</h2>
     <div class="teacher-details">

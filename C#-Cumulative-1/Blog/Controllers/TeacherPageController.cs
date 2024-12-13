@@ -58,7 +58,7 @@ namespace School.Controllers
         }
 
     
-          /// <summary>
+        /// <summary>
         /// Displays a form to create a new teacher. 
         /// </summary>
         /// <example>
@@ -103,6 +103,7 @@ namespace School.Controllers
          /// <summary>
         /// Displays a confirmation page before deleting a teacher.
         /// </summary>
+        /// <param name="id">Selected teacher's ID</param>
         /// <example>
         /// // GET : TeacherPage/DeleteConfirm/{11} (Cary Agos, teacher ID: 11)-> Are you sure you want to delete Cary Agos? Conform delete -> back to the list
         /// </example>
@@ -119,7 +120,7 @@ namespace School.Controllers
           /// <summary>
         /// Deletes the selected teacher by their ID and redirects to the list page. 
         /// </summary>
-        /// /// <param name="id">Selected teacher's ID</param>
+        /// <param name="id">Selected teacher's ID</param>
         /// <example>
         /// POST: /api/Teacher/DeleteTeacher/12 -> 1
         /// </example>
@@ -134,6 +135,73 @@ namespace School.Controllers
             return RedirectToAction("List");
         }
 
-      
-}
+      // GET : AuthorPage/Edit/{id}
+    /// <summary>
+    /// Retrieves the teacher data to be edited based on the given ID.
+    /// </summary>
+    /// <param name="id">The unique id of the teacher to be edited.</param>
+    /// <example>
+    /// GET : AuthorPage/Edit/11 -> show.cshtml
+    /// Back to the list/Delete/Edit
+    /// {First Name : Alicia,
+    /// Last Name:  Florrick,
+    /// Hire Date:  2016-08-05,
+    /// EmployeeNumber: T602,
+    /// TeacherSalary: 78.55}
+    /// button : Update Teachers
+    /// </example>
+    /// <returns>
+    /// A view populated with the current teacher's details for editing.
+    /// </returns>
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            Teacher SelectedTeacher = _api.FindTeacher(id);
+            return View(SelectedTeacher);
+        }
+
+
+
+
+        // POST: AuthorPage/Update/{id}
+    /// <summary>
+    /// Updates the teacher's details in the database based on the provided input.
+    /// </summary>
+    /// <param name="id">The unique id of the teacher being updated.</param>
+    /// <param name="TeacherFName">Updates choosen teacher first name.</param>
+    /// <param name="TeacherLName">Updates choosen teacher Last name.</param>
+    /// <param name="EmployeeNumber">Updates choosen teacher employee number.</param>
+    /// <param name="TeacherHireDate">Updates choosen teacher hire date.</param>
+    /// <param name="TeacherSalary">Updates choosen teacher salary.</param>
+    /// <example>
+    /// POST : AuthorPage/Update/11 -> show.cshtml
+    /// ->Edit
+    ///  /// {First Name : ,
+    /// Last Name:  ,
+    /// Hire Date:  ,
+    /// EmployeeNumber: ,
+    /// TeacherSalary: }
+    /// button : Update Teachers
+    /// </example>
+    /// <returns>
+    /// Redirects to the "Show" action to display the updated details of the teacher.
+    /// </returns>
+
+        [HttpPost]
+        public IActionResult Update(int id, string TeacherFName , string TeacherLName, string EmployeeNumber , DateTime TeacherHireDate,  decimal TeacherSalary)
+        {
+            Teacher UpdatedTeacher = new Teacher();
+            UpdatedTeacher.TeacherFName = TeacherFName;
+            UpdatedTeacher.TeacherLName = TeacherLName;
+            UpdatedTeacher.EmployeeNumber  = EmployeeNumber ;
+            UpdatedTeacher.TeacherHireDate = TeacherHireDate;
+            UpdatedTeacher.TeacherSalary = TeacherSalary;
+
+            // not doing anything with the response
+            _api.UpdateTeacher(id, UpdatedTeacher);
+            // redirects to show author
+            return RedirectToAction("Show", new{id = id});
+        } 
+   }
 }

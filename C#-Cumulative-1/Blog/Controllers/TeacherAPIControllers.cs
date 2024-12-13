@@ -259,7 +259,91 @@ namespace School.Controllers
             }
 
     }
-     
- }
+        /// <summary>
+        /// Updates a Teacher based on the provided ID.
+        /// </summary>
+        /// <param name="TeacherData">Teacher Object</param>
+        /// <param name="TeacherId">The Teacher ID primary key</param>
+        /// <example>
+        /// PUT: http://localhost:5266/api/Teacher/UpdateTeacher/11
+        /// Headers: Content-Type: application/json
+        /// Request Body:
+        /// {
+        ///	    "teacherFName": "Alicia",
+        ///	    "teacherLName": "Florrick",
+        ///	    "employeeNumber": "T602",
+        ///	    "teacherHireDate": "2016-08-05T00:00:00",
+        ///	    "teacherSalary": 78.55
+        /// } -> 
+        /// {
+        ///     "TeacherID":11,
+        ///	    "teacherFName": "Alicia",
+        ///	    "teacherLName": "Florrick",
+        ///	    "employeeNumber": "T602",
+        ///	    "teacherHireDate": "2016-08-05T00:00:00",
+        ///	    "teacherSalary": 78.55
+        /// }
+        /// </example>
+        /// <returns>
+        /// The updated Teacher object
+        /// </returns>
+        [HttpPut(template: "UpdateTeacher/{TeacherId}")]
+        public IActionResult UpdateTeacher(int TeacherId, [FromBody] Teacher TeacherData)
+        {       
+        try{
+            // (Server)if Teacher Name is empty, it returns error message
+           if (string.IsNullOrWhiteSpace(TeacherData.TeacherFName) )
+           {
+            return BadRequest("Teacher name cannot be empty.");
+           }
+           if (string.IsNullOrWhiteSpace(TeacherData.TeacherLName))
+           {
+            return BadRequest("Teacher name cannot be empty.");
+           }
+           // (Server)if Teacher Hire Date is in the future, it returns error message
+           if (TeacherData.TeacherHireDate > DateTime.UtcNow)
+           {
+            return BadRequest("Hire date cannot be in the future." );
+           }
+            // (Server)if Teacher salary is less than 0, it returns error message
+           if (TeacherData.TeacherSalary < 0)
+           {
+            return BadRequest("Salary must be greater than or equal to 0." );
+           }
+            Teacher existingTeacher = FindTeacher(TeacherId); 
+            // 'using' will close the connection after the code executes
+            using (MySqlConnection Connection = _context.AccessDatabase())
+            {
+                Connection.Open();
+                //Establish a new command (query) for our database
+                MySqlCommand Command = Connection.CreateCommand();
+
+                // parameterize query
+                Command.CommandText = "UPDATE teachers set teacherfname=@teacherfname, teacherlname=@teacherlname, hiredate=@hiredate, employeenumber=@employeenumber, salary=@salary where teacherid=@id";
+              Command.Parameters.AddWithValue("@teacherfname", TeacherData.TeacherFName);
+                Command.Parameters.AddWithValue("@teacherlname", TeacherData.TeacherLName);
+                 Command.Parameters.AddWithValue("@hiredate", TeacherData.TeacherHireDate);
+                Command.Parameters.AddWithValue("@employeenumber", TeacherData.EmployeeNumber );
+                Command.Parameters.AddWithValue("@salary", TeacherData.TeacherSalary);
+
+                Command.Parameters.AddWithValue("@id", TeacherId);
+
+                Command.ExecuteNonQuery();
+
+            Teacher UpdateTeacher = FindTeacher (TeacherId);
+             if (UpdateTeacher  == null)
+        {
+            return NotFound($"Teacher with ID {TeacherId} not found");
+        }
+            return Ok(UpdateTeacher);
+            }
+        }
+        catch (Exception ex){
+            return StatusCode(500, "An unexpected error occurred.");
+        }
+        }
+    }
+
 }
+ 
 

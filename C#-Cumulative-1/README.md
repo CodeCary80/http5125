@@ -38,3 +38,5 @@ The services we need for everything connects, including the information in datab
 2. InvalidOperationException: The view 'List' was not found. The following locations were searched: /Views/TeacherPage/List.cshtml /Views/Shared/List.cshtml
 
 3. If your database's column is auto-incremented then it will automatically assign unique id to your item instead of using the one you set up, make sure to check your item's id in the database and make error handling when trying to delete a teacher that does not exist.
+
+4. Beware of writing errors, it's @Model not @model, and when updating teacher don't write an extra @ in the command, e.g. hiredate = @@hiredate.
